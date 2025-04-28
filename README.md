@@ -23,3 +23,16 @@ queue ! \
 matroskamux name=mux ! \
 filesink location=output_high_bitrate.mkv
 ```
+
+
+```
+gst-launch-1.0 -vvv \
+v4l2src device=/dev/video0 ! \
+video/x-raw,framerate=30/1,format=UYVY ! \
+videoconvert ! \
+v4l2h264enc output-io-mode=4 ! \
+h264parse ! \
+queue ! \
+matroskamux name=mux ! \
+filesink location=output_high_bitrate.mkv
+```
